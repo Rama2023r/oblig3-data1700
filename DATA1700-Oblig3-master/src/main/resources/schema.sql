@@ -1,0 +1,10 @@
+CREATE TABLE Billett (
+    id INT AUTO_INCREMENT NOT NULL,
+    film VARCHAR(100) NOT NULL,
+    antall INTEGER NOT NULL,
+    fornavn VARCHAR(100) NOT NULL,
+    etternavn VARCHAR(100) NOT NULL,
+    telefonnr VARCHAR(100) NOT NULL,
+    epost VARCHAR(100) NOT NULL,
+    PRIMARY KEY(id)
+);
