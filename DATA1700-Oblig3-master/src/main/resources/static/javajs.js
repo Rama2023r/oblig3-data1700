@@ -104,9 +104,10 @@ function opprettBillett() {
 }
 
 function visTabell(billettArray) {
-    let ut = "<table class='table table-light table-striped table-hover'><tr><th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th></tr>";
 
-    for (billett of billettArray) {
+    let ut = "<table class='table table-light table-striped table-hover'><tr><th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th></tr>";
+    const billettTabellDivsort = billettArray.sort(compare);
+    for (billett of billettTabellDivsort) {
         ut += "<tr>";
         ut += "<td>" + billett.film + "</td>";
         ut += "<td>" + billett.antall + "</td>";
@@ -121,6 +122,17 @@ function visTabell(billettArray) {
 
     document.getElementById("billettTabellDiv").innerHTML = ut;
 }
+
+function compare(a, b) {
+    if ( a.etternavn < b.etternavn ){
+        return -1;
+    }
+    if ( a.etternavn > b.etternavn ){
+        return 1;
+    }
+    return 0;
+}
+
 
 function slettBillettene() {
     $.post("/slettAlleBilletter", function() {
